@@ -1,0 +1,12 @@
+Knob:
+GND to 45R >>> 45R to - using resistor
++ to +
+SW to 30R >>> 30R to digital input 12 on board
+DT to 35L >>> 35L to A0 on board
+
+LED
+Long pin to ground
+Short pin to 20R resistor >>> 20R to output 8 on board
+
+5V to +
+GND to -
