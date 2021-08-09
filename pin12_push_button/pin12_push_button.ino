@@ -7,8 +7,6 @@ Author: Colin McAllister
 int pushButton = 12;
 int LED = 8;
 
-int volumeUp = 92;
-int volumeDown = 170;
 int counter = 0;
 
 // knob input
@@ -30,15 +28,28 @@ void loop() {
   // read the input pin:
   int buttonState = digitalRead(pushButton);
   int knobReading = analogRead(sensorPin);
-  if(knobReading < 1000) { //defaults to 1022 or 1023
-    if (knobReading < 100) {
-      counter = counter - 1;
+  if (knobReading < 1000) { //defaults to 1022 or 1023
+    if (knobReading < 170) {
+      if (counter != 0) {
+        counter = counter - 1;
+      } else {
+        counter = counter;
+      }
     } else {
-      counter = counter + 1;
+      if (counter != 10) {
+        counter = counter + 1;
+      } else {
+        counter = counter;
+      }
     }
+
+      Serial.println(knobReading);
+
+    
       Serial.println(counter);
-      delay(150);
+      delay(300);
   }  
+
   delay(1);        // delay in between reads for stability
 
   //if button is pressed
